@@ -2,42 +2,52 @@ using UnityEngine;
 
 public class InteractionManager : MonoBehaviour
 {
-    [Header("Cameras")]
-    [SerializeField] private Camera mainCamera;
-    [SerializeField] private Camera lockCamera;
-    [SerializeField] private GameObject buttonTextUI;
-    [SerializeField] private PadlockController padlockController;
+    [SerializeField] private Camera playerCamera;
+    [SerializeField] private float interactionDistance = 3f;
+    [SerializeField] private LayerMask interactableMask;
 
+    private Interactable currentTarget;
 
-    [Header("Lights")]
-    [SerializeField] private Light boxLight;
-
-    private bool isInteractingWithLock = false;
-    private void Awake()
-    {
-        padlockController = GameObject.FindGameObjectWithTag("Padlock").GetComponent<PadlockController>();
-    }
+    public static bool IsInteractingWithUI { get; private set; }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        HandleRaycast();
+
+        if (Input.GetKeyDown(KeyCode.E) && currentTarget != null)
         {
-            // TODO: Add if statement that presents wheter a player is close to the box
-            ToggleLockInteraction();
+            currentTarget.Interact();
         }
     }
 
-    private void ToggleLockInteraction()
+    void HandleRaycast()
     {
-        padlockController.selectedRing = 0;
-        isInteractingWithLock = !isInteractingWithLock;
+        currentTarget = null;
 
-        mainCamera.enabled = !isInteractingWithLock;
-        lockCamera.enabled = isInteractingWithLock;
-        boxLight.enabled = isInteractingWithLock;
-        buttonTextUI.SetActive(isInteractingWithLock);
+        Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+        if (Physics.Raycast(ray, out RaycastHit hit, interactionDistance, interactableMask))
+        {
+            Interactable interactable = hit.collider.GetComponent<Interactable>();
+            if (interactable != null && interactable.CanInteract(playerCamera.transform))
+            {
+                currentTarget = interactable;
 
-        Cursor.lockState = isInteractingWithLock ? CursorLockMode.None : CursorLockMode.Locked;
-        Cursor.visible = isInteractingWithLock;
+                // Ako NE treba da se prikazuje UI, sakrij ga
+                if (interactable.HideUIWhileInteracting)
+                    UIManager.Instance.HideInteractionUI();
+                else
+                    UIManager.Instance.ShowInteractionUI();
+
+                return;
+            }
+        }
+
+        // Ako ništa nije pogodio, ili nije Interactable, sakrij UI
+        UIManager.Instance.HideInteractionUI();
+    }
+
+    public static void SetUIInteraction(bool active)
+    {
+        IsInteractingWithUI = active;
     }
 }

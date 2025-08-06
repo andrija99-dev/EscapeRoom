@@ -15,8 +15,7 @@ public class LightSequence : MonoBehaviour
 
     private IEnumerator SequenceCoroutine()
     {
-        foreach (Light light in lights)
-            light.enabled = false;
+        EnableLights(false);
 
         foreach (Light light in lights)
         {
@@ -26,7 +25,11 @@ public class LightSequence : MonoBehaviour
 
         yield return new WaitForSeconds(delayBeforeReset);
 
+        EnableLights(false);
+    }
+    private void EnableLights(bool enable)
+    {
         foreach (Light light in lights)
-            light.enabled = false;
+            light.enabled = enable;
     }
 }
