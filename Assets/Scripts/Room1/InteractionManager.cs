@@ -27,6 +27,11 @@ public class InteractionManager : MonoBehaviour
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, interactionDistance, interactableMask))
         {
+            if(hit.collider.name == "Key")
+            {
+
+                Debug.Log("Raycast hit: " + hit.collider.name);
+            }
             Interactable interactable = hit.collider.GetComponent<Interactable>();
             if (interactable != null && interactable.CanInteract(playerCamera.transform))
             {

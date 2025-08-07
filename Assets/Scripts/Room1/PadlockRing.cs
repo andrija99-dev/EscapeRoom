@@ -20,7 +20,6 @@ public class PadlockRing : MonoBehaviour
         ringValue = (ringValue + direction + 10) % 10;
         float angle = offset - ringValue * anglePerStep;
         transform.localRotation = Quaternion.Euler(angle, 0f, 0f);
-        Debug.Log("Rotirano");
     }
 
 }

@@ -4,32 +4,52 @@ using UnityEngine;
 
 public class LightSequence : MonoBehaviour
 {
-    [SerializeField] private List<Light> lights;
-    [SerializeField] private float delayBetweenLights;
-    [SerializeField] private float delayBeforeReset;
+    [SerializeField] private List<Light> yellowLights;
+    [SerializeField] private List<Light> redLights;
+    [SerializeField] private List<Light> greenLights;
+
+    [SerializeField] private float delayBetweenLights = 0.5f;
+    [SerializeField] private float delayBeforeReset = 1.0f;
 
     public void StartSequence()
     {
-        StartCoroutine(SequenceCoroutine());
+        StartCoroutine(LightSequenceCoroutine());
     }
 
-    private IEnumerator SequenceCoroutine()
+    private IEnumerator LightSequenceCoroutine()
     {
-        EnableLights(false);
+        while (true)
+        {
+            EnableLights(yellowLights, false);
+            EnableLights(redLights, false);
+            EnableLights(greenLights, false);
 
-        foreach (Light light in lights)
+            yield return StartCoroutine(EnableLightsSequentially(yellowLights));
+            EnableLights(yellowLights, false);
+
+            yield return StartCoroutine(EnableLightsSequentially(redLights));
+            EnableLights(redLights, false);
+
+            yield return StartCoroutine(EnableLightsSequentially(greenLights));
+            EnableLights(greenLights, false);
+
+            yield return new WaitForSeconds(delayBeforeReset);
+        }
+        
+    }
+
+    private IEnumerator EnableLightsSequentially(List<Light> lights)
+    {
+        foreach (var light in lights)
         {
             light.enabled = true;
             yield return new WaitForSeconds(delayBetweenLights);
         }
-
-        yield return new WaitForSeconds(delayBeforeReset);
-
-        EnableLights(false);
     }
-    private void EnableLights(bool enable)
+
+    private void EnableLights(List<Light> lights, bool enable)
     {
-        foreach (Light light in lights)
+        foreach (var light in lights)
             light.enabled = enable;
     }
 }

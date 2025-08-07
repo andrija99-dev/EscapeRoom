@@ -7,13 +7,16 @@ public class PadlockController : MonoBehaviour
     [SerializeField] private PadlockRing[] rings; 
     [SerializeField] private int[] correctCode = new int[4];
     [SerializeField] private TextMeshProUGUI controlsText;
-    [SerializeField] private PadlockInteractable padlockInteractable;
+    [SerializeField] private GameObject boxSystem;
+    [SerializeField] private GameObject key;
+    private PadlockInteractable padlockInteractable;
     private int selectedRing = 0;
 
 
     private void Awake()
     {
         controlsText.text = "A / D - Menja prsten\r\nW / S - Rotira broj\r\nE - Izlaz";
+        padlockInteractable = boxSystem.GetComponent<PadlockInteractable>();
     }    
 
     void Update()
@@ -55,10 +58,11 @@ public class PadlockController : MonoBehaviour
     {
         if (IsCorrectCombination())
         {
-            Debug.Log("Otkljucano!");
+            boxSystem.layer = LayerMask.NameToLayer("Default");
+            key.SetActive(true);
+            key.GetComponent<KeyMover>().StartMoving();
             UIManager.Instance.HideBoxUI();
-            PlayerInventory.Instance.ObtainKey();
-            // TODO: Get Key...
+
         }
         else
         {

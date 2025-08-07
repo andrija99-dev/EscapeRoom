@@ -19,21 +19,33 @@ public class UIManager : MonoBehaviour
 
     public void ShowInteractionUI()
     {
-        InteractionUI.SetActive(true);
+        if (!InteractionUI.activeSelf)
+        {
+            InteractionUI.SetActive(true);
+        }
     }
 
     public void HideInteractionUI()
     {
-        InteractionUI.SetActive(false);
+        if (InteractionUI.activeSelf)
+        {
+            InteractionUI.SetActive(false);
+        }
     }
 
     public void ShowBoxUI()
     {
-        boxUI.SetActive(true);
+        if (!boxUI.activeSelf)
+        {
+            boxUI.SetActive(true);
+        }
     }
 
     public void HideBoxUI()
     {
-        boxUI.SetActive(false);
+        if (boxUI.activeSelf)
+        {
+            boxUI.SetActive(false);
+        }
     }
 }
