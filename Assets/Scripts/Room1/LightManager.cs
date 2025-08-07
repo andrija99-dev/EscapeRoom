@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class LightManager : MonoBehaviour
@@ -5,6 +6,7 @@ public class LightManager : MonoBehaviour
     public static LightManager Instance;
 
     [SerializeField] private Light boxLight;
+    [SerializeField] private Light storyLight;
 
     private void Awake()
     {
@@ -23,5 +25,15 @@ public class LightManager : MonoBehaviour
     public void DisableBoxLight()
     {
         boxLight.enabled = false;
+    }
+
+    internal void EnableStoryLight()
+    {
+        storyLight.enabled = true;
+    }
+
+    internal void DisableStoryLight()
+    {
+        storyLight.enabled = false;
     }
 }

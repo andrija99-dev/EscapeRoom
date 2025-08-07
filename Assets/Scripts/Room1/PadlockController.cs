@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -6,18 +7,12 @@ public class PadlockController : MonoBehaviour
 {
     [SerializeField] private PadlockRing[] rings; 
     [SerializeField] private int[] correctCode = new int[4];
-    [SerializeField] private TextMeshProUGUI controlsText;
     [SerializeField] private GameObject boxSystem;
     [SerializeField] private GameObject key;
-    private PadlockInteractable padlockInteractable;
     private int selectedRing = 0;
 
 
-    private void Awake()
-    {
-        controlsText.text = "A / D - Menja prsten\r\nW / S - Rotira broj\r\nE - Izlaz";
-        padlockInteractable = boxSystem.GetComponent<PadlockInteractable>();
-    }    
+    
 
     void Update()
     {        
@@ -26,11 +21,7 @@ public class PadlockController : MonoBehaviour
         {
             return;
         }
-        if (InteractionManager.IsInteractingWithUI && Input.GetKeyDown(KeyCode.Escape))
-        {
-            
-            padlockInteractable.ExitUI();
-        }
+        
 
         if (Input.GetKeyDown(KeyCode.A))
             selectedRing = Mathf.Max(0, selectedRing - 1);
@@ -62,7 +53,12 @@ public class PadlockController : MonoBehaviour
             key.SetActive(true);
             key.GetComponent<KeyMover>().StartMoving();
             UIManager.Instance.HideBoxUI();
+            UIManager.Instance.ShowPopUpUI("Congratulations!\r\nTake the key!", 3f);
 
+        }
+        else if(rings.All(ring => ring.RingValue == 3))
+        {
+            UIManager.Instance.ShowPopUpUI("Remember the 1st rule?", 1.5f);
         }
         else
         {

@@ -12,6 +12,7 @@ public class PadlockInteractable : Interactable
         InteractionManager.SetUIInteraction(true);
         padlock.ResetSelectedRing();
         HideUIWhileInteracting = true;
+        SetCurrentInteractable(this);
 
         CameraManager.Instance.DisableMainCamera();
         CameraManager.Instance.EnableBoxCamera();
@@ -28,7 +29,7 @@ public class PadlockInteractable : Interactable
         float angle = Vector3.Angle(cam.forward, (transform.position - cam.position).normalized);
         return angle < 45f;
     }
-    public void ExitUI()
+    public override void ExitUI()
     {
         InteractionManager.SetUIInteraction(false);
         padlock.ResetSelectedRing();

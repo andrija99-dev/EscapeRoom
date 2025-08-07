@@ -17,6 +17,5 @@ public class PlayerInventory : MonoBehaviour
     public void ObtainKey()
     {
         HasKey = true;
-        Debug.Log("Uzeo kljuc");
     }
 }

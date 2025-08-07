@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour
@@ -6,6 +7,8 @@ public class CameraManager : MonoBehaviour
 
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Camera boxCamera;
+    [SerializeField] private Camera storyCamera;
+    [SerializeField] private Camera tvCamera;
 
     private void Awake()
     {
@@ -30,5 +33,25 @@ public class CameraManager : MonoBehaviour
     public void DisableBoxCamera()
     {
         boxCamera.enabled = false;
+    }
+
+    internal void EnableStoryCamera()
+    {
+        storyCamera.enabled = true;
+    }
+
+    internal void DisableStoryCamera()
+    {
+        storyCamera.enabled = false;
+    }
+
+    internal void EnableTvCamera()
+    {
+        tvCamera.enabled = true;
+    }
+
+    internal void DisableTvCamera()
+    {
+        tvCamera.enabled = false;
     }
 }

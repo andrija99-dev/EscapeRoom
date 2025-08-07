@@ -8,7 +8,6 @@ public class Key : Interactable
         PlayerInventory.Instance.ObtainKey();
         Destroy(gameObject);
         padlockInteractable.ExitUI();
-        Debug.Log("Kljuc uzet!");
 
     }
 
