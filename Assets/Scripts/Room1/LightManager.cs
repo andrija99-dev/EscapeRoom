@@ -7,13 +7,19 @@ public class LightManager : MonoBehaviour
 
     [SerializeField] private Light boxLight;
     [SerializeField] private Light storyLight;
+    [SerializeField] private Light keyLight;
 
     private void Awake()
     {
         if (Instance == null)
+        {
             Instance = this;
+        }
         else
+        {
             Destroy(gameObject);
+            return;
+        }
     }
 
     public void EnableBoxLight()
@@ -35,5 +41,10 @@ public class LightManager : MonoBehaviour
     internal void DisableStoryLight()
     {
         storyLight.enabled = false;
+    }
+
+    internal void EnableKeyLight()
+    {
+        keyLight.enabled = true;
     }
 }

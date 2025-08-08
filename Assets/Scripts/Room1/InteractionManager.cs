@@ -3,7 +3,7 @@ using UnityEngine;
 public class InteractionManager : MonoBehaviour
 {
     [SerializeField] private Camera playerCamera;
-    [SerializeField] private float interactionDistance = 1.5f;
+    [SerializeField] private float interactionDistance;
     [SerializeField] private LayerMask interactableMask;
 
     private Interactable currentTarget;
@@ -18,7 +18,7 @@ public class InteractionManager : MonoBehaviour
         {
             currentTarget.Interact();
         }
-        if (IsInteractingWithUI && Input.GetKeyDown(KeyCode.Escape))
+        if (IsInteractingWithUI && Input.GetKeyDown(KeyCode.X))
         {
 
             Interactable.currentInteractable.ExitUI();
@@ -39,7 +39,6 @@ public class InteractionManager : MonoBehaviour
                 
                 currentTarget = interactable;
 
-                // Ako NE treba da se prikazuje UI, sakrij ga
                 if (interactable.HideUIWhileInteracting)
                     UIManager.Instance.HideInteractionUI();
                 else
@@ -49,7 +48,6 @@ public class InteractionManager : MonoBehaviour
             }
         }
 
-        // Ako ništa nije pogodio, ili nije Interactable, sakrij UI
         UIManager.Instance.HideInteractionUI();
     }
 

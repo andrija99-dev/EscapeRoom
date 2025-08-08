@@ -3,6 +3,8 @@ using UnityEngine;
 public class LightSwitchInteractable : Interactable
 {
     [SerializeField] private LightSequence lightSequence;
+    [SerializeField] private AudioClip buttonClickSound;
+
     private bool isClicked = false;
 
     public override void Interact()
@@ -19,5 +21,6 @@ public class LightSwitchInteractable : Interactable
     {
         isClicked = true;
         lightSequence.StartSequence();
+        SoundManager.Instance.PlaySFX(buttonClickSound);
     }
 }

@@ -12,7 +12,7 @@ public class StoryInteractable : Interactable
         CameraManager.Instance.DisableMainCamera();
         CameraManager.Instance.EnableStoryCamera();
         LightManager.Instance.EnableStoryLight();
-        UIManager.Instance.ShowMessageUI("Esc - Exit");
+        UIManager.Instance.ShowMessageUI("X - Exit");
 
     }
 

@@ -3,23 +3,23 @@ using UnityEngine;
 public class Door : Interactable
 {
     private bool isOpen = false;
+    private DoorController doorController;   
 
+
+    private void Awake()
+    {
+        doorController = GetComponent<DoorController>();        
+    }
     public override void Interact()
     {
-        
-        OpenDoor();
-        
+        isOpen = true;
+        doorController.OpenDoor();
+
     }
 
     public override bool CanInteract(Transform interactor)
     {
         return PlayerInventory.Instance.HasKey && !isOpen;
     }
-
-    private void OpenDoor()
-    {
-        isOpen = true;
-        // Animacija, rotacija, itd.
-        Debug.Log("Vrata su otvorena!");
-    }
+    
 }

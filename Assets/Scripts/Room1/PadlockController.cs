@@ -9,6 +9,9 @@ public class PadlockController : MonoBehaviour
     [SerializeField] private int[] correctCode = new int[4];
     [SerializeField] private GameObject boxSystem;
     [SerializeField] private GameObject key;
+    [SerializeField] private AudioClip openingBoxSound;
+    [SerializeField] private AudioClip wrongCodeSound;
+
     private int selectedRing = 0;
 
 
@@ -54,15 +57,19 @@ public class PadlockController : MonoBehaviour
             key.GetComponent<KeyMover>().StartMoving();
             UIManager.Instance.HideBoxUI();
             UIManager.Instance.ShowPopUpUI("Congratulations!\r\nTake the key!", 3f);
-
+            SoundManager.Instance.PlaySFX(openingBoxSound);
         }
         else if(rings.All(ring => ring.RingValue == 3))
         {
             UIManager.Instance.ShowPopUpUI("Remember the 1st rule?", 1.5f);
+            SoundManager.Instance.PlaySFX(wrongCodeSound);
+
         }
         else
         {
-            Debug.Log("Pogresan kod.");
+            UIManager.Instance.ShowPopUpUI("Wrong code", 1.5f);
+            SoundManager.Instance.PlaySFX(wrongCodeSound);
+
         }
     }
     

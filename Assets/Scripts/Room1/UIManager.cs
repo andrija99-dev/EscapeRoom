@@ -78,7 +78,10 @@ public class UIManager : MonoBehaviour
 
     public void ShowPopUpUI(string message, float timeframe)
     {
-        StartCoroutine(ShowPopUpCoroutine(message, timeframe));
+        if (!popUpUI.activeSelf)
+        {
+            StartCoroutine(ShowPopUpCoroutine(message, timeframe));
+        }
     }
 
     private IEnumerator ShowPopUpCoroutine(string message, float timeframe)

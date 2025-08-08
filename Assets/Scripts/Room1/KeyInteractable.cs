@@ -7,7 +7,12 @@ public class Key : Interactable
     {
         PlayerInventory.Instance.ObtainKey();
         Destroy(gameObject);
-        padlockInteractable.ExitUI();
+
+        if (padlockInteractable.HideUIWhileInteracting)
+        {
+            padlockInteractable.ExitUI();
+        }
+        
 
     }
 
