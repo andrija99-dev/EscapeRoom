@@ -13,7 +13,7 @@ public class KeyMover : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, targetPosition.position, moveSpeed * Time.deltaTime);
 
             if (Vector3.Distance(transform.position, targetPosition.position) < 0.01f)
-                shouldMove = false; // prestani kada stigne
+                shouldMove = false; 
         }
     }
 

@@ -9,6 +9,7 @@ public class InteractionManager : MonoBehaviour
     private Interactable currentTarget;
 
     public static bool IsInteractingWithUI { get; private set; }
+    public static int CurrentRoom { get; private set; } = 1;
 
     void Update()
     {
@@ -54,5 +55,13 @@ public class InteractionManager : MonoBehaviour
     public static void SetUIInteraction(bool active)
     {
         IsInteractingWithUI = active;
+    }
+
+    public static void GoToNextRoom()
+    {
+        Debug.Log($"Trenutni broj sobe pre pomeranja: {CurrentRoom}");
+        CurrentRoom++;
+        Debug.Log($"Trenutni broj sobe POSLE pomeranja: {CurrentRoom}");
+
     }
 }

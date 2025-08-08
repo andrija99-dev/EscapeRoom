@@ -20,7 +20,7 @@ public class PadlockController : MonoBehaviour
     void Update()
     {        
 
-        if (!InteractionManager.IsInteractingWithUI)
+        if (!InteractionManager.IsInteractingWithUI || Interactable.currentInteractable != boxSystem.GetComponent<Interactable>())
         {
             return;
         }
@@ -50,23 +50,22 @@ public class PadlockController : MonoBehaviour
 
     public void ValidateCode()
     {
+        Debug.Log("Usao na pocetak Validate coda");
         if (IsCorrectCombination())
         {
+            Debug.Log("Usao u if");
             boxSystem.layer = LayerMask.NameToLayer("Default");
             key.SetActive(true);
             key.GetComponent<KeyMover>().StartMoving();
-            UIManager.Instance.HideBoxUI();
+            UIManager.Instance.HideBoxUI(InteractionManager.CurrentRoom);
             UIManager.Instance.ShowPopUpUI("Congratulations!\r\nTake the key!", 3f);
             SoundManager.Instance.PlaySFX(openingBoxSound);
-        }
-        else if(rings.All(ring => ring.RingValue == 3))
-        {
-            UIManager.Instance.ShowPopUpUI("Remember the 1st rule?", 1.5f);
-            SoundManager.Instance.PlaySFX(wrongCodeSound);
+            LightManager.Instance.EnableDoorLight(InteractionManager.CurrentRoom);
 
         }
         else
         {
+            Debug.Log("Usao u else");
             UIManager.Instance.ShowPopUpUI("Wrong code", 1.5f);
             SoundManager.Instance.PlaySFX(wrongCodeSound);
 

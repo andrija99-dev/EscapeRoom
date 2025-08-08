@@ -7,7 +7,7 @@ public class KeyController : MonoBehaviour
     {
         if (!padlockInteractable.HideUIWhileInteracting)
         {
-            LightManager.Instance.EnableKeyLight();
+            LightManager.Instance.EnableKeyLight(InteractionManager.CurrentRoom);
         }
     }
 }

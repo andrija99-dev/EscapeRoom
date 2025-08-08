@@ -5,9 +5,14 @@ public class LightManager : MonoBehaviour
 {
     public static LightManager Instance;
 
-    [SerializeField] private Light boxLight;
-    [SerializeField] private Light storyLight;
-    [SerializeField] private Light keyLight;
+    [SerializeField] private Light boxLightRoom1;
+    [SerializeField] private Light boxLightRoom2;
+    [SerializeField] private Light storyBrothersLight;
+    [SerializeField] private Light storyCornerLight;
+    [SerializeField] private Light keyLightRoom1;
+    [SerializeField] private Light keyLightRoom2;
+    [SerializeField] private Light doorLightRoom1;
+    [SerializeField] private Light doorLightRoom2;
 
     private void Awake()
     {
@@ -22,29 +27,93 @@ public class LightManager : MonoBehaviour
         }
     }
 
-    public void EnableBoxLight()
-    {  
-        boxLight.enabled = true;
-        
+    public void EnableBoxLight(int roomNumber)
+    {
+        switch (roomNumber)
+        {
+            case 1:
+                boxLightRoom1.enabled = true;
+                break;
+            case 2:
+                boxLightRoom2.enabled = true;
+                break;
+            default:
+                break;
+        }
+
     }
 
-    public void DisableBoxLight()
+    public void DisableBoxLight(int roomNumber)
     {
-        boxLight.enabled = false;
+        switch (roomNumber)
+        {
+            case 1:
+                boxLightRoom1.enabled = false;
+                break;
+            case 2:
+                boxLightRoom2.enabled = false;
+                break;
+            default:
+                break;
+        }
     }
 
-    internal void EnableStoryLight()
+    public void EnableStoryLight(int roomNumber)
     {
-        storyLight.enabled = true;
+        switch (roomNumber)
+        {
+            case 1:
+                storyBrothersLight.enabled = true;
+                break;
+            case 2:
+                storyCornerLight.enabled = true;
+                break;
+            default:
+                break;
+        }
     }
 
-    internal void DisableStoryLight()
+    public void DisableStoryLight(int roomNumber)
     {
-        storyLight.enabled = false;
-    }
+        switch (roomNumber)
+        {
+            case 1:
+                storyBrothersLight.enabled = false;
+                break;
+            case 2:
+                storyCornerLight.enabled = false;
+                break;
+            default:
+                break;
+        }
+    }   
 
-    internal void EnableKeyLight()
+    public void EnableKeyLight(int roomNumber)
     {
-        keyLight.enabled = true;
+        switch (roomNumber)
+        {
+            case 1:
+                keyLightRoom1.enabled = true;
+                break;
+            case 2:
+                keyLightRoom2.enabled = true;
+                break;
+            default:
+                break;
+        }
+    }
+    public void EnableDoorLight(int roomNumber)
+    {
+        switch (roomNumber)
+        {
+            case 1:
+                doorLightRoom1.enabled = true;
+                break;
+            case 2:
+                doorLightRoom2.enabled = true;
+                break;
+            default:
+                break;
+        }
     }
 }

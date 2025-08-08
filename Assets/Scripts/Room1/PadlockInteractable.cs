@@ -3,21 +3,18 @@ using UnityEngine;
 public class PadlockInteractable : Interactable
 {
     [SerializeField] private PadlockController padlock;
-    
-
-    
 
     public override void Interact()
     {
         InteractionManager.SetUIInteraction(true);
         padlock.ResetSelectedRing();
-        HideUIWhileInteracting = true;
         SetCurrentInteractable(this);
+        HideUIWhileInteracting = true;
 
         CameraManager.Instance.DisableMainCamera();
-        CameraManager.Instance.EnableBoxCamera();
-        LightManager.Instance.EnableBoxLight();
-        UIManager.Instance.ShowBoxUI();
+        CameraManager.Instance.EnableBoxCamera(InteractionManager.CurrentRoom);
+        LightManager.Instance.EnableBoxLight(InteractionManager.CurrentRoom);
+        UIManager.Instance.ShowBoxUI(InteractionManager.CurrentRoom);
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -36,9 +33,9 @@ public class PadlockInteractable : Interactable
         HideUIWhileInteracting = false;
 
         CameraManager.Instance.EnableMainCamera();
-        CameraManager.Instance.DisableBoxCamera();
-        LightManager.Instance.DisableBoxLight();
-        UIManager.Instance.HideBoxUI();
+        CameraManager.Instance.DisableBoxCamera(InteractionManager.CurrentRoom);
+        LightManager.Instance.DisableBoxLight(InteractionManager.CurrentRoom);
+        UIManager.Instance.HideBoxUI(InteractionManager.CurrentRoom);
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

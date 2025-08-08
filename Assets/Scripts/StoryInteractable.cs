@@ -10,8 +10,8 @@ public class StoryInteractable : Interactable
         SetCurrentInteractable(this);
 
         CameraManager.Instance.DisableMainCamera();
-        CameraManager.Instance.EnableStoryCamera();
-        LightManager.Instance.EnableStoryLight();
+        CameraManager.Instance.EnableStoryCamera(InteractionManager.CurrentRoom);
+        LightManager.Instance.EnableStoryLight(InteractionManager.CurrentRoom);
         UIManager.Instance.ShowMessageUI("X - Exit");
 
     }
@@ -27,8 +27,8 @@ public class StoryInteractable : Interactable
         HideUIWhileInteracting = false;
 
         CameraManager.Instance.EnableMainCamera();
-        CameraManager.Instance.DisableStoryCamera();
-        LightManager.Instance.DisableStoryLight();
+        CameraManager.Instance.DisableStoryCamera(InteractionManager.CurrentRoom);
+        LightManager.Instance.DisableStoryLight(InteractionManager.CurrentRoom);
         UIManager.Instance.HideMessageUI();
 
     }

@@ -18,4 +18,9 @@ public class PlayerInventory : MonoBehaviour
     {
         HasKey = true;
     }
+
+    public void DestroyKey()
+    {
+        HasKey = false;
+    }
 }

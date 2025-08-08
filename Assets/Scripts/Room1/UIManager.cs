@@ -2,14 +2,20 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static UnityEngine.Rendering.DebugUI;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
-    [SerializeField] private GameObject boxUI;
     [SerializeField] private GameObject InteractionUI;
+
+    [Header("Box Number 1")]
+    [SerializeField] private GameObject boxNumber1UI;
+
+    [Header("Box Number 2")]
+    [SerializeField] private GameObject boxNumber2UI;
 
     [Header("CustomizableMessage")]
     [SerializeField] private GameObject showMessageUI;
@@ -42,19 +48,60 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void ShowBoxUI()
+    public void ShowBoxUI(int roomNumber)
     {
-        if (!boxUI.activeSelf)
+        switch (roomNumber)
         {
-            boxUI.SetActive(true);
+            case 1:
+
+                if (!boxNumber1UI.activeSelf)
+                {
+                    boxNumber1UI.SetActive(true);
+                }
+                break;
+            case 2:
+
+                if (!boxNumber2UI.activeSelf)
+                {
+                    boxNumber2UI.SetActive(true);
+                }
+                break;
+
+            default:
+                break;
         }
+
     }
 
-    public void HideBoxUI()
+    public void HideBoxUI(int roomNumber)
     {
-        if (boxUI.activeSelf)
+        switch (roomNumber)
         {
-            boxUI.SetActive(false);
+            case 1:
+
+                if (boxNumber1UI.activeSelf)
+                {
+                    boxNumber1UI.SetActive(false);
+                }
+                break;
+            case 2:
+
+                if (boxNumber2UI.activeSelf)
+                {
+                    boxNumber2UI.SetActive(false);
+                }
+                break;
+
+            default:
+                if (boxNumber2UI.activeSelf)
+                {
+                    boxNumber2UI.SetActive(false);
+                }
+                else if (boxNumber1UI.activeSelf)
+                {
+                    boxNumber1UI.SetActive(false);
+                }
+                break;
         }
     }
 

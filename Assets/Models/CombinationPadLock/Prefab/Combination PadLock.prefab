@@ -390,6 +390,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2933079874060365905}
   - component: {fileID: 3404402356410622240}
+  - component: {fileID: 7255122569250257068}
   - component: {fileID: 1366022303003802309}
   m_Layer: 0
   m_Name: Combination PadLock
@@ -442,6 +443,28 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &7255122569250257068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2593990056247519979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ea02b2fe3629442ad273a95a3f3e58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rings:
+  - {fileID: 0}
+  - {fileID: 1342315104727502393}
+  - {fileID: 203479633215900556}
+  - {fileID: 1661847280295000296}
+  correctCode: 08000000020000000300000009000000
+  boxSystem: {fileID: 0}
+  key: {fileID: 0}
+  openingBoxSound: {fileID: 8300000, guid: 5ca68536c54ac5c469a48fde1e24d332, type: 3}
+  wrongCodeSound: {fileID: 8300000, guid: a129c3b68b0df6a43bc4175d2f3ff862, type: 3}
 --- !u!114 &1366022303003802309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,7 +483,10 @@ MonoBehaviour:
   - {fileID: 203479633215900556}
   - {fileID: 1661847280295000296}
   correctCode: 04000000020000000700000009000000
-  controlsText: {fileID: 0}
+  boxSystem: {fileID: 0}
+  key: {fileID: 0}
+  openingBoxSound: {fileID: 0}
+  wrongCodeSound: {fileID: 0}
 --- !u!1 &5672145452768627774
 GameObject:
   m_ObjectHideFlags: 0

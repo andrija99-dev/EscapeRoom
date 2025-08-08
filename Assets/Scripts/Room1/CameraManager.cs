@@ -6,9 +6,12 @@ public class CameraManager : MonoBehaviour
     public static CameraManager Instance;
 
     [SerializeField] private Camera mainCamera;
-    [SerializeField] private Camera boxCamera;
-    [SerializeField] private Camera storyCamera;
+    [SerializeField] private Camera boxCameraRoom1;
+    [SerializeField] private Camera storyBrothersCamera;
+    [SerializeField] private Camera storyCornerCamera;
+    [SerializeField] private Camera secondRuleCamera;
     [SerializeField] private Camera tvCamera;
+    [SerializeField] private Camera boxCameraRoom2;
 
     private void Awake()
     {
@@ -26,23 +29,71 @@ public class CameraManager : MonoBehaviour
     {
         mainCamera.enabled = false;
     }
-    public void EnableBoxCamera()
+    public void EnableBoxCamera(int roomNumber)
     {
-        boxCamera.enabled = true;
+        switch (roomNumber)
+        {
+            case 1:
+                boxCameraRoom1.enabled = true;
+                break;
+
+            case 2:
+                boxCameraRoom2.enabled = true;
+                break;
+
+            default:
+                break;
+        }
     }
-    public void DisableBoxCamera()
+    public void DisableBoxCamera(int roomNumber)
     {
-        boxCamera.enabled = false;
+        switch (roomNumber)
+        {
+            case 1:
+                boxCameraRoom1.enabled = false;
+                break;
+
+            case 2:
+                boxCameraRoom2.enabled = false;
+                break;
+
+            default:
+                break;
+        }
     }
 
-    internal void EnableStoryCamera()
+    public void EnableStoryCamera(int roomNumber)
     {
-        storyCamera.enabled = true;
+        switch (roomNumber)
+        {
+            case 1:
+                storyBrothersCamera.enabled = true;
+                break;
+
+            case 2:
+                storyCornerCamera.enabled = true;
+                break;
+
+            default:
+                break;
+        }
     }
 
-    internal void DisableStoryCamera()
+    public void DisableStoryCamera(int roomNumber)
     {
-        storyCamera.enabled = false;
+        switch (roomNumber)
+        {
+            case 1:
+                storyBrothersCamera.enabled = false;
+                break;
+
+            case 2:
+                storyCornerCamera.enabled = false;
+                break;
+
+            default:
+                break;
+        }
     }
 
     internal void EnableTvCamera()
