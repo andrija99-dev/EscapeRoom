@@ -10,6 +10,7 @@ public class DoorController : MonoBehaviour
     private Quaternion targetRotation;
     private bool isOpening = false;
     private bool isClosing = false;
+    private bool hasOpened = false;
     private bool hasPlayedSound = false;
 
     private void Start()

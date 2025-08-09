@@ -13,6 +13,13 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private Camera tvCamera;
     [SerializeField] private Camera boxCameraRoom2;
 
+    [Header("Hint Numbers")]
+    [SerializeField] private Camera hintNumber2Camera;
+    [SerializeField] private Camera hintNumber4Camera;
+    [SerializeField] private Camera hintNumber5Camera;
+    [SerializeField] private Camera hintNumber7Camera;
+
+
     private void Awake()
     {
         if (Instance == null)
@@ -104,5 +111,55 @@ public class CameraManager : MonoBehaviour
     internal void DisableTvCamera()
     {
         tvCamera.enabled = false;
+    }
+
+    internal void EnableHintNumberCamera(int hintNumber)
+    {
+        switch (hintNumber)
+        {
+            case 2:
+                hintNumber2Camera.enabled = true;
+                break;
+
+            case 4:
+                hintNumber4Camera.enabled = true;
+                break;
+
+            case 5:
+                hintNumber5Camera.enabled = true;
+                break;
+
+            case 7:
+                hintNumber7Camera.enabled = true;
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    internal void DisableHintNumberCamera(int hintNumber)
+    {
+        switch (hintNumber)
+        {
+            case 2:
+                hintNumber2Camera.enabled = false;
+                break;
+
+            case 4:
+                hintNumber4Camera.enabled = false;
+                break;
+
+            case 5:
+                hintNumber5Camera.enabled = false;
+                break;
+
+            case 7:
+                hintNumber7Camera.enabled = false;
+                break;
+
+            default:
+                break;
+        }
     }
 }
