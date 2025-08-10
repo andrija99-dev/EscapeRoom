@@ -50,10 +50,8 @@ public class PadlockController : MonoBehaviour
 
     public void ValidateCode()
     {
-        Debug.Log("Usao na pocetak Validate coda");
         if (IsCorrectCombination())
         {
-            Debug.Log("Usao u if");
             boxSystem.layer = LayerMask.NameToLayer("Default");
             key.SetActive(true);
             key.GetComponent<KeyMover>().StartMoving();
@@ -65,7 +63,6 @@ public class PadlockController : MonoBehaviour
         }
         else
         {
-            Debug.Log("Usao u else");
             UIManager.Instance.ShowPopUpUI("Wrong code", 1.5f);
             SoundManager.Instance.PlaySFX(wrongCodeSound);
 

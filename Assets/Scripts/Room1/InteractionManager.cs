@@ -4,13 +4,19 @@ public class InteractionManager : MonoBehaviour
 {
     [SerializeField] private Camera playerCamera;
     [SerializeField] private float interactionDistance;
-    [SerializeField] private LayerMask interactableMask;
+    [SerializeField] private string layerMask;
+
+    [SerializeField] private GameObject[] rulesInspector;
+    public static GameObject[] rules;
 
     private Interactable currentTarget;
 
     public static bool IsInteractingWithUI { get; private set; }
     public static int CurrentRoom { get; private set; } = 1;
-
+    private void Awake()
+    {
+        rules = rulesInspector;
+    }
     void Update()
     {
         HandleRaycast();
@@ -32,8 +38,15 @@ public class InteractionManager : MonoBehaviour
         currentTarget = null;
 
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
-        if (Physics.Raycast(ray, out RaycastHit hit, interactionDistance, interactableMask))
-        {            
+
+        if (Physics.Raycast(ray, out RaycastHit hit, interactionDistance))
+        {
+            if (LayerMask.LayerToName(hit.collider.gameObject.layer) != layerMask)
+            {
+                UIManager.Instance.HideInteractionUI();
+                return;
+            }
+
             Interactable interactable = hit.collider.GetComponent<Interactable>();
             if (interactable != null && interactable.CanInteract(playerCamera.transform))
             {
@@ -60,6 +73,7 @@ public class InteractionManager : MonoBehaviour
     public static void GoToNextRoom()
     {
         Debug.Log($"Trenutni broj sobe pre pomeranja: {CurrentRoom}");
+        rules[CurrentRoom - 1].layer = LayerMask.NameToLayer("Default");
         CurrentRoom++;
         Debug.Log($"Trenutni broj sobe POSLE pomeranja: {CurrentRoom}");
 

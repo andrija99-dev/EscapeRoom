@@ -17,6 +17,9 @@ public class UIManager : MonoBehaviour
     [Header("Box Number 2")]
     [SerializeField] private GameObject boxNumber2UI;
 
+    [Header("Box Number 3")]
+    [SerializeField] private GameObject boxNumber3UI;
+
     [Header("CustomizableMessage")]
     [SerializeField] private GameObject showMessageUI;
     [SerializeField] private TextMeshProUGUI messageText;
@@ -59,11 +62,20 @@ public class UIManager : MonoBehaviour
                     boxNumber1UI.SetActive(true);
                 }
                 break;
+
             case 2:
 
                 if (!boxNumber2UI.activeSelf)
                 {
                     boxNumber2UI.SetActive(true);
+                }
+                break;
+
+            case 3:
+
+                if (!boxNumber3UI.activeSelf)
+                {
+                    boxNumber3UI.SetActive(true);
                 }
                 break;
 
@@ -84,6 +96,7 @@ public class UIManager : MonoBehaviour
                     boxNumber1UI.SetActive(false);
                 }
                 break;
+
             case 2:
 
                 if (boxNumber2UI.activeSelf)
@@ -92,12 +105,26 @@ public class UIManager : MonoBehaviour
                 }
                 break;
 
+            case 3:
+
+                if (boxNumber3UI.activeSelf)
+                {
+                    boxNumber3UI.SetActive(false);
+                }
+                break;
+
             default:
                 if (boxNumber2UI.activeSelf)
                 {
                     boxNumber2UI.SetActive(false);
                 }
+
                 else if (boxNumber1UI.activeSelf)
+                {
+                    boxNumber1UI.SetActive(false);
+                }
+
+                else if (boxNumber3UI.activeSelf)
                 {
                     boxNumber1UI.SetActive(false);
                 }

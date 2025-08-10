@@ -7,11 +7,13 @@ public class LightManager : MonoBehaviour
 
     [SerializeField] private Light boxLightRoom1;
     [SerializeField] private Light boxLightRoom2;
+    [SerializeField] private Light boxLightRoom3;
     [SerializeField] private Light storyBrothersLight;
     [SerializeField] private Light storyCornerLight;
+    [SerializeField] private Light storyOldestBrotherLight;    
     [SerializeField] private Light keyLightRoom1;
-    [SerializeField] private Light keyLightRoom2;
     [SerializeField] private Light doorLightRoom1;
+    [SerializeField] private Light keyLightRoom2;
     [SerializeField] private Light doorLightRoom2;
 
     private void Awake()
@@ -34,8 +36,13 @@ public class LightManager : MonoBehaviour
             case 1:
                 boxLightRoom1.enabled = true;
                 break;
+
             case 2:
                 boxLightRoom2.enabled = true;
+                break;
+
+            case 3:
+                boxLightRoom3.enabled = true;
                 break;
             default:
                 break;
@@ -50,9 +57,15 @@ public class LightManager : MonoBehaviour
             case 1:
                 boxLightRoom1.enabled = false;
                 break;
+
             case 2:
                 boxLightRoom2.enabled = false;
                 break;
+
+            case 3:
+                boxLightRoom3.enabled = false;
+                break;
+
             default:
                 break;
         }
@@ -65,9 +78,15 @@ public class LightManager : MonoBehaviour
             case 1:
                 storyBrothersLight.enabled = true;
                 break;
+
             case 2:
                 storyCornerLight.enabled = true;
                 break;
+
+            case 3:
+                storyOldestBrotherLight.enabled = true;
+                break;
+
             default:
                 break;
         }
@@ -80,9 +99,15 @@ public class LightManager : MonoBehaviour
             case 1:
                 storyBrothersLight.enabled = false;
                 break;
+
             case 2:
                 storyCornerLight.enabled = false;
                 break;
+
+            case 3:
+                storyOldestBrotherLight.enabled = false;
+                break;
+
             default:
                 break;
         }

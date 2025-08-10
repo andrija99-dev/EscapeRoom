@@ -15,6 +15,7 @@ public class HintNumberInteractable : Interactable
 
     }
 
+
     public override void ExitUI()
     {
         InteractionManager.SetUIInteraction(false);

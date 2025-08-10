@@ -5,13 +5,15 @@ public class CameraManager : MonoBehaviour
 {
     public static CameraManager Instance;
 
+    [SerializeField] private Camera tvCamera;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Camera boxCameraRoom1;
+    [SerializeField] private Camera boxCameraRoom2;
+    [SerializeField] private Camera boxCameraRoom3;
     [SerializeField] private Camera storyBrothersCamera;
     [SerializeField] private Camera storyCornerCamera;
+    [SerializeField] private Camera storyOldestBrotherCamera;
     [SerializeField] private Camera secondRuleCamera;
-    [SerializeField] private Camera tvCamera;
-    [SerializeField] private Camera boxCameraRoom2;
 
     [Header("Hint Numbers")]
     [SerializeField] private Camera hintNumber2Camera;
@@ -48,6 +50,10 @@ public class CameraManager : MonoBehaviour
                 boxCameraRoom2.enabled = true;
                 break;
 
+            case 3:
+                boxCameraRoom3.enabled = true;
+                break;
+
             default:
                 break;
         }
@@ -62,6 +68,10 @@ public class CameraManager : MonoBehaviour
 
             case 2:
                 boxCameraRoom2.enabled = false;
+                break;
+
+            case 3:
+                boxCameraRoom3.enabled = false;
                 break;
 
             default:
@@ -81,6 +91,10 @@ public class CameraManager : MonoBehaviour
                 storyCornerCamera.enabled = true;
                 break;
 
+            case 3:
+                storyOldestBrotherCamera.enabled = true;
+                break;
+
             default:
                 break;
         }
@@ -96,6 +110,10 @@ public class CameraManager : MonoBehaviour
 
             case 2:
                 storyCornerCamera.enabled = false;
+                break;
+
+            case 3:
+                storyOldestBrotherCamera.enabled = false;
                 break;
 
             default:
