@@ -13,7 +13,6 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private Camera storyBrothersCamera;
     [SerializeField] private Camera storyCornerCamera;
     [SerializeField] private Camera storyOldestBrotherCamera;
-    [SerializeField] private Camera secondRuleCamera;
 
     [Header("Hint Numbers")]
     [SerializeField] private Camera hintNumber2Camera;

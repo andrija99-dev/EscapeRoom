@@ -38,7 +38,7 @@ public class InteractionManager : MonoBehaviour
         currentTarget = null;
 
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
-
+        Debug.DrawRay(ray.origin, ray.direction * interactionDistance, Color.red);
         if (Physics.Raycast(ray, out RaycastHit hit, interactionDistance))
         {
             if (LayerMask.LayerToName(hit.collider.gameObject.layer) != layerMask)
@@ -72,10 +72,8 @@ public class InteractionManager : MonoBehaviour
 
     public static void GoToNextRoom()
     {
-        Debug.Log($"Trenutni broj sobe pre pomeranja: {CurrentRoom}");
         rules[CurrentRoom - 1].layer = LayerMask.NameToLayer("Default");
         CurrentRoom++;
-        Debug.Log($"Trenutni broj sobe POSLE pomeranja: {CurrentRoom}");
 
     }
 }
