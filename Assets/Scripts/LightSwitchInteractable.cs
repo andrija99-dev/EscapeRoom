@@ -22,5 +22,6 @@ public class LightSwitchInteractable : Interactable
         isClicked = true;
         lightSequence.StartSequence();
         SoundManager.Instance.PlaySFX(buttonClickSound);
+        HintManager.Instance.MarkClueFound(InteractionManager.CurrentRoom, 1);
     }
 }

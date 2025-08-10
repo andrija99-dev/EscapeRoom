@@ -56,14 +56,14 @@ public class PadlockController : MonoBehaviour
             key.SetActive(true);
             key.GetComponent<KeyMover>().StartMoving();
             UIManager.Instance.HideBoxUI(InteractionManager.CurrentRoom);
-            UIManager.Instance.ShowPopUpUI("Congratulations!\r\nTake the key!", 3f);
+            UIManager.Instance.ShowPopUpUI("Congratulations!\r\nTake the key!", 2.5f);
             SoundManager.Instance.PlaySFX(openingBoxSound);
             LightManager.Instance.EnableDoorLight(InteractionManager.CurrentRoom);
 
         }
         else
         {
-            UIManager.Instance.ShowPopUpUI("Wrong code", 1.5f);
+            UIManager.Instance.ShowPopUpUI("Wrong code", 1f);
             SoundManager.Instance.PlaySFX(wrongCodeSound);
 
         }

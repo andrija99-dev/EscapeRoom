@@ -13,6 +13,8 @@ public class StoryInteractable : Interactable
         CameraManager.Instance.EnableStoryCamera(InteractionManager.CurrentRoom);
         LightManager.Instance.EnableStoryLight(InteractionManager.CurrentRoom);
         UIManager.Instance.ShowMessageUI("X - Exit");
+        HintManager.Instance.MarkClueFound(InteractionManager.CurrentRoom, 0);
+
 
     }
 

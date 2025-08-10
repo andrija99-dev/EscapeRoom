@@ -16,6 +16,12 @@ public class PadlockInteractable : Interactable
         LightManager.Instance.EnableBoxLight(InteractionManager.CurrentRoom);
         UIManager.Instance.ShowBoxUI(InteractionManager.CurrentRoom);
 
+        if(InteractionManager.CurrentRoom == 1)
+        {
+            HintManager.Instance.MarkClueFound(InteractionManager.CurrentRoom, 3);
+        }
+
+
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }

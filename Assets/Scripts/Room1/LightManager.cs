@@ -115,6 +115,7 @@ public class LightManager : MonoBehaviour
 
     public void EnableKeyLight(int roomNumber)
     {
+
         switch (roomNumber)
         {
             case 1:

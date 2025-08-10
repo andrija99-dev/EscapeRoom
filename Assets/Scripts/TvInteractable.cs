@@ -11,6 +11,8 @@ public class TvInteractable : Interactable
         CameraManager.Instance.DisableMainCamera();
         CameraManager.Instance.EnableTvCamera();
         UIManager.Instance.ShowMessageUI("X - Exit");
+        HintManager.Instance.MarkClueFound(InteractionManager.CurrentRoom, 2);
+
 
     }
 

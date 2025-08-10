@@ -3,6 +3,7 @@ using UnityEngine;
 public class HintNumberInteractable : Interactable
 {
     [SerializeField] private int hintNumber;
+    [SerializeField] private int numberInHintManager;
     public override void Interact()
     {
         InteractionManager.SetUIInteraction(true);
@@ -12,6 +13,7 @@ public class HintNumberInteractable : Interactable
         CameraManager.Instance.DisableMainCamera();
         CameraManager.Instance.EnableHintNumberCamera(hintNumber);
         UIManager.Instance.ShowMessageUI("X - Exit");
+        HintManager.Instance.MarkClueFound(InteractionManager.CurrentRoom, numberInHintManager);
 
     }
 
