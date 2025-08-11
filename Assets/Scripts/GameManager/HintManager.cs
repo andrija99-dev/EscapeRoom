@@ -42,14 +42,14 @@ public class HintManager : MonoBehaviour
         clueCountPerRoom[1] = 4;
 
         roomHints[2] = new List<string>
-        {   "Look around the room, you might find something useful.",
+        {   "Have you read the room rule?",
             "Look around the room, you might find something useful.",
             "Look around the room, you might find something useful.",
             "Look around the room, you might find something useful.",
             "Look around the room, you might find something useful.",
             "The symbols you read on the walls—do they hide something if you look a little closer?",
             "What if you look at the bottom left corner of the symbol — do you see a number there?",
-            "Why are symbols placed in wall corners, and do they match the paper’s numbers?",
+            "Each symbol is in a different corner of its OWN wall, right?",
             "Comparing the wall corner number and paper sequence, what code appears?",
             "The code is 4725.",
         };

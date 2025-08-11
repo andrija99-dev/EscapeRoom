@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class MacroHandler : MonoBehaviour
 {
+    [SerializeField] private GameObject popUpUI;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.H))
@@ -19,6 +20,11 @@ public class MacroHandler : MonoBehaviour
     {
         if (HintManager.Instance == null || UIManager.Instance == null)
             return;
+
+        if (popUpUI.activeSelf)
+        {
+            return;
+        }
 
         string hint = HintManager.Instance.GetCurrentHint();
         if (!string.IsNullOrEmpty(hint))
