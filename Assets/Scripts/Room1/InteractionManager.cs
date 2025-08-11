@@ -75,5 +75,6 @@ public class InteractionManager : MonoBehaviour
         rules[CurrentRoom - 1].layer = LayerMask.NameToLayer("Default");
         CurrentRoom++;
 
+
     }
 }

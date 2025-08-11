@@ -22,8 +22,6 @@ public class HintManager : MonoBehaviour
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
-
         InitializeHintsAndProgress();
     }
 

@@ -29,7 +29,6 @@ public class MacroHandler : MonoBehaviour
 
     private void ExitGame()
     {
-        Debug.Log("Exiting game...");
         Application.Quit();
 
 #if UNITY_EDITOR

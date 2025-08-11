@@ -9,7 +9,6 @@ public class FPSController : MonoBehaviour
     private CharacterController controller;
     private Transform cam;
     private float xRotation = 0f;
-    private bool skipMouseInput = true;
 
     void Start()
     {
@@ -20,7 +19,6 @@ public class FPSController : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        skipMouseInput = true;
     }
 
     void Update()
@@ -30,26 +28,14 @@ public class FPSController : MonoBehaviour
             return;
         }
 
-        if (skipMouseInput)
-        {
-            
-            if (Input.GetAxis("Mouse X") == 0 && Input.GetAxis("Mouse Y") == 0)
-            {
-                return;
-            }                
-
-            skipMouseInput = false;
-            return;  
-        }
-
         HandleMovement();
         HandleMouseLook();
     }
 
     void HandleMovement()
     {
-        float x = Input.GetAxis("Horizontal"); // A/D
-        float z = Input.GetAxis("Vertical");   // W/S
+        float x = Input.GetAxis("Horizontal"); 
+        float z = Input.GetAxis("Vertical");   
 
         Vector3 move = transform.right * x + transform.forward * z;
         controller.Move(move * moveSpeed * Time.deltaTime);
@@ -60,10 +46,8 @@ public class FPSController : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
-        // Rotacija tela (levo-desno)
         transform.Rotate(Vector3.up * mouseX);
 
-        // Rotacija kamere (gore-dole)
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 

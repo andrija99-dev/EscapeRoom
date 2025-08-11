@@ -24,7 +24,7 @@ public class DoorController : MonoBehaviour
         if (isOpening)
         {
             PlayerInventory.Instance.DestroyKey();
-            if (!hasPlayedSound)
+            if (!hasPlayedSound && doorOpenSound != null)
             {
                 SoundManager.Instance.PlaySFX(doorOpenSound);
                 hasPlayedSound = true;
@@ -41,6 +41,10 @@ public class DoorController : MonoBehaviour
                 isOpening = false;
                 hasPlayedSound = false;
                 InteractionManager.GoToNextRoom();
+                if (InteractionManager.CurrentRoom == 4)
+                {
+                    Object.FindFirstObjectByType<VictoryUI>().ShowVictoryScreen();
+                }
             }
         }
         else if (isClosing)
