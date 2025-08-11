@@ -43,10 +43,10 @@ public class HintManager : MonoBehaviour
 
         roomHints[2] = new List<string>
         {   "Have you read the room rule?",
-            "Look around the room, you might find something useful.",
-            "Look around the room, you might find something useful.",
-            "Look around the room, you might find something useful.",
-            "Look around the room, you might find something useful.",
+            "Look around the room, even at the smallest details.",
+            "Look around the room, even at the smallest details.",
+            "Look around the room, even at the smallest details.",
+            "Look around the room, even at the smallest details.",
             "The symbols you read on the walls—do they hide something if you look a little closer?",
             "What if you look at the bottom left corner of the symbol — do you see a number there?",
             "Each symbol is in a different corner of its OWN wall, right?",
