@@ -27,6 +27,9 @@ public class UIManager : MonoBehaviour
     [Header("CustomizablePopUp")]
     [SerializeField] private GameObject popUpUI;
     [SerializeField] private TextMeshProUGUI popUpText;
+
+    [Header("Exit Game")]
+    [SerializeField] private GameObject exitGamePanel;
     private void Awake()
     {
         if (Instance == null)
@@ -155,6 +158,22 @@ public class UIManager : MonoBehaviour
         if (!popUpUI.activeSelf)
         {
             StartCoroutine(ShowPopUpCoroutine(message, timeframe));
+        }
+    }
+
+    public void ShowExitGamePanel()
+    {
+        if (!exitGamePanel.activeSelf)
+        {
+            exitGamePanel.SetActive(true);
+        }
+    }
+
+    public void HideExitGamePanel()
+    {
+        if (exitGamePanel.activeSelf)
+        {
+            exitGamePanel.SetActive(false);
         }
     }
 

@@ -12,7 +12,9 @@ public class MacroHandler : MonoBehaviour
 
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
-            ExitGame();
+            UIManager.Instance.ShowExitGamePanel();
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 
@@ -33,12 +35,19 @@ public class MacroHandler : MonoBehaviour
         }
     }
 
-    private void ExitGame()
+    public void ExitGame()
     {
         Application.Quit();
 
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
+    }
+
+    public void DontExitGame()
+    {
+        UIManager.Instance.HideExitGamePanel();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }
